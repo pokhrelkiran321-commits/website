@@ -11,11 +11,11 @@ export default function Footer() {
                     <img src="./assets/mail_icon.png" alt="" className="w-5 dark:hidden" />
                     <img src="./assets/mail_icon_dark.png" alt="" className="w-5 hidden dark:block" />
 
-                    <a href="mailto:contact@prebuiltui.com">contact@prebuiltui.com</a>
+                    <a href="mailto:contact@kiran-pokhrel.com.np"> contact@kiran-pokhrel.com.np </a>
                 </div>
             </div>
             <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-3">
-                <p>© {new Date().getFullYear()} <a href="https://prebuiltui.com" target="_blank">PrebuiltUI</a> • Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a> • All rights reserved.</p>
+                <p>© {new Date().getFullYear()} <a href="https://kiran-pokhrel.com.np " target="_blank">Kiran Pokhrel</a> • Distributed by <a href="https://kiran-pokhrel.com.np " target="_blank">Kiran Pokhrel</a> • All rights reserved.</p>
                 <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
                     <li><a href="#!">GitHub</a></li>
                     <li><a href="#!">LinkedIn</a></li>
