@@ -6,15 +6,6 @@ export default function Contact() {
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        const hCaptcha = event.target.querySelector(
-            'textarea[name="h-captcha-response"]'
-        )?.value;
-
-        if (!hCaptcha) {
-            setResult("Please fill out captcha field");
-            return;
-        }
-
         setResult("Sending....");
 
         const formData = new FormData(event.target);
@@ -40,44 +31,6 @@ export default function Contact() {
             setResult("Submission failed. Please try again.");
         }
     };
-
-    function CaptchaLoader() {
-        const captchadiv = document.querySelectorAll('[data-captcha="true"]');
-        if (captchadiv.length) {
-            let lang = null;
-            let onload = null;
-            let render = null;
-
-            captchadiv.forEach(function (item) {
-                const sitekey = item.dataset.sitekey;
-                lang = item.dataset.lang;
-                onload = item.dataset.onload;
-                render = item.dataset.render;
-
-                if (!sitekey) {
-                    item.dataset.sitekey =
-                        "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
-                }
-            });
-
-            let scriptSrc =
-                "https://js.hcaptcha.com/1/api.js?recaptchacompat=off";
-            if (lang) scriptSrc += `&hl=${lang}`;
-            if (onload) scriptSrc += `&onload=${onload}`;
-            if (render) scriptSrc += `&render=${render}`;
-
-            const script = document.createElement("script");
-            script.type = "text/javascript";
-            script.async = true;
-            script.defer = true;
-            script.src = scriptSrc;
-            document.body.appendChild(script);
-        }
-    }
-
-    useEffect(() => {
-        CaptchaLoader();
-    }, []);
 
     return (
         <div
@@ -127,11 +80,6 @@ export default function Contact() {
                     required
                     name="message"
                 ></textarea>
-
-                <div
-                    className="h-captcha mb-6 max-w-full"
-                    data-captcha="true"
-                ></div>
 
                 <button
                     type="submit"
