@@ -1,22 +1,31 @@
-# Eliana - React JS Portfolio Template
-#### Preview
+# Kiran Pokhrel – React JS Portfolio
 
- - [Demo](https://themewagon.github.io/eliana-react/)
+#### Live Preview
 
-#### Download
- - [Download from ThemeWagon](https://themewagon.com/themes/eliana-react/)
+* **Demo:** [https://kiran-pokhrel.com.np/](https://kiran-pokhrel.com.np/)
+
+#### Template Base
+
+* **Template Name:** Eliana – React JS Portfolio
+* **Provided by:** ThemeWagon
+
+---
 
 ## Getting Started
 
-1. Clone Repository
-```
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/themewagon/eliana-react.git
 ```
-2. Install Dependencies
+
+### 2. Install Dependencies
+
+```bash
+npm install
 ```
-npm i
-```
-3. Run the development server:
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
@@ -28,13 +37,40 @@ pnpm dev
 bun dev
 ```
 
-## Author 
+The application will run at:
+`http://localhost:5173`
+
+---
+
+## Customization
+
+This project has been **customized and personalized for Kiran Pokhrel**.
+Changes include:
+
+* Personal branding and content updates
+* Contact form integration
+* UI and layout adjustments as needed
+* Configuration updates for deployment
+
+This portfolio is intended for **personal and professional showcase purposes**.
+
+---
+
+## Author & Credits
+
 ```
-Design and code is completely written by PrebuiltUI and development team. 
+Original Design & Development:
+PrebuiltUI Development Team
+
+Customization & Personalization:
+Kiran Pokhrel
 ```
+
+---
 
 ## License
 
- - Design and Code is Copyright &copy; <a href="https://prebuiltui.com/" target="_blank">PrebuiltUI</a>
- - Licensed cover under [MIT]
- - Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+* Original Design & Code © PrebuiltUI
+* Licensed under the **MIT License**
+* Distributed by **ThemeWagon**
+* Custom modifications © Kiran Pokhrel
