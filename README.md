@@ -6,7 +6,7 @@
 
 #### Template Base
 
-* **Template Name:** Eliana – React JS Portfolio
+* **Template Name:** Kiran Pokhrel – React JS Portfolio
 * **Provided by:** ThemeWagon
 
 ---
