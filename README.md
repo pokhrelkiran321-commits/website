@@ -16,7 +16,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/themewagon/eliana-react.git
+git clone https://kiran-pokhrel.com.np
 ```
 
 ### 2. Install Dependencies
