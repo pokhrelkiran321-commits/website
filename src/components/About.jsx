@@ -1,4 +1,25 @@
+import { useEffect, useRef, useState } from "react";
+
 export default function About() {
+    const circleRef = useRef(null);
+    const [showCircle, setShowCircle] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShowCircle(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.4 }
+        );
+
+        if (circleRef.current) observer.observe(circleRef.current);
+
+        return () => observer.disconnect();
+    }, []);
+
     const tools = [
         { name: 'vscode', icon: './assets/vscode.png' },
         { name: 'firebase', icon: './assets/firebase.png' },
@@ -35,29 +56,54 @@ export default function About() {
 
             <div className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
                 
-                {/* Image */}
-                <div className="max-w-max mx-auto">
+                {/* Image Section */}
+                <div className="max-w-max mx-auto relative">
                     <img
                         src="./assets/user-image.png"
                         alt="User"
                         className="w-64 sm:w-80 rounded-3xl"
                     />
+
+                    {/* Sliding Circle */}
+                    <div
+                        ref={circleRef}
+                        className={`absolute right-0 bottom-0 w-1/2 aspect-square rounded-full 
+                        flex items-center justify-center
+                        transition-all duration-700 ease-out
+                        ${showCircle
+                            ? "opacity-100 translate-x-1/4 translate-y-1/3"
+                            : "opacity-0 translate-x-10 translate-y-10"
+                        }`}
+                    >
+                        <img
+                            src="./assets/circular-text.png"
+                            alt=""
+                            className="w-full"
+                        />
+                        <img
+                            src="./assets/dev-icon.png"
+                            alt=""
+                            className="w-1/4 absolute top-1/2 left-1/2 
+                            -translate-x-1/2 -translate-y-1/2"
+                        />
+                    </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1">
                     <p className="mb-10 max-w-2xl font-Ovo">
                         I am an experienced Frontend Developer with over a decade of professional
-                        expertise in the field. Throughout my career, I have had the privilege of
-                        collaborating with prestigious organizations, contributing to their success
-                        and growth.
+                        expertise in the field. I have collaborated with prestigious organizations
+                        and contributed to their success and growth.
                     </p>
 
                     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
                         {data.map((item) => (
                             <li
                                 key={item.name}
-                                className="border border-gray-300 dark:border-white/30 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover/50"
+                                className="border border-gray-300 dark:border-white/30 rounded-xl p-6
+                                hover:-translate-y-1 duration-500 cursor-pointer
+                                hover:bg-lightHover dark:hover:bg-darkHover/50"
                             >
                                 <img src={item.icon1} alt="" className="w-7 mt-3 dark:hidden" />
                                 <img src={item.icon2} alt="" className="w-7 mt-3 hidden dark:block" />
@@ -79,7 +125,9 @@ export default function About() {
                         {tools.map((tool) => (
                             <li
                                 key={tool.name}
-                                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg hover:-translate-y-1 duration-500"
+                                className="w-12 sm:w-14 aspect-square flex items-center justify-center
+                                border border-gray-300 dark:border-white/30 rounded-lg
+                                hover:-translate-y-1 duration-500"
                             >
                                 <img src={tool.icon} alt={tool.name} className="w-5 sm:w-7" />
                             </li>
