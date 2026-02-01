@@ -30,14 +30,21 @@ const INFO_CARDS = [
 export default function About() {
   return (
     <section id="about" className="w-full px-[12%] py-10 scroll-mt-20">
-      {/* Inline style to ensure the animation works even if Tailwind config isn't updated */}
+      {/* CSS for both Sliding and Spinning */}
       <style jsx>{`
-        @keyframes spin_slow {
+        @keyframes slideIn {
+          0% { transform: translate(100%, 33%) opacity: 0; }
+          100% { transform: translate(25%, 33%) opacity: 1; }
+        }
+        @keyframes rotate {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        .animate-spin-slow {
-          animation: spin_slow 10s linear infinite;
+        .badge-slide-in {
+          animation: slideIn 1.5s ease-out forwards;
+        }
+        .text-rotate {
+          animation: rotate 10s linear infinite;
         }
       `}</style>
 
@@ -47,7 +54,6 @@ export default function About() {
       </header>
 
       <div className="my-20 flex flex-col lg:flex-row items-center gap-20">
-        {/* Profile Image with Rotating Text */}
         <div className="relative mx-auto max-w-max">
           <img
             src="./assets/user-image.png"
@@ -55,17 +61,17 @@ export default function About() {
             className="w-64 sm:w-80 rounded-3xl"
           />
 
-          {/* This is the white circle badge */}
-          <div className="absolute right-0 bottom-0 w-1/2 aspect-square translate-x-1/4 translate-y-1/3 rounded-full bg-white shadow-[0_4px_55px_rgba(149,0,162,0.15)] flex items-center justify-center">
+          {/* The White Circle Badge - Now with badge-slide-in */}
+          <div className="absolute right-0 bottom-0 w-1/2 aspect-square rounded-full bg-white shadow-[0_4px_55px_rgba(149,0,162,0.15)] flex items-center justify-center badge-slide-in">
             
-            {/* The Rotating Text Image */}
+            {/* Rotating Circular Text */}
             <img
               src="./assets/circular-text.png"
-              alt="Front-End Developer Text"
-              className="w-full h-full p-1 animate-spin-slow"
+              alt="Front-End Developer"
+              className="w-full h-full p-1 text-rotate"
             />
             
-            {/* The Static Icon in the middle */}
+            {/* Center Icon */}
             <img
               src="./assets/dev-icon.png"
               alt="Icon"
@@ -89,27 +95,16 @@ export default function About() {
               >
                 <img src={item.iconLight} alt="" className="w-7 mt-3 dark:hidden" />
                 <img src={item.iconDark} alt="" className="w-7 mt-3 hidden dark:block" />
-
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/80">
-                  {item.description}
-                </p>
+                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">{item.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-white/80">{item.description}</p>
               </li>
             ))}
           </ul>
 
-          <h4 className="my-6 font-Ovo text-gray-700 dark:text-white/80">
-            Tools I use
-          </h4>
-
+          <h4 className="my-6 font-Ovo text-gray-700 dark:text-white/80">Tools I use</h4>
           <ul className="flex items-center gap-3 sm:gap-5">
             {TOOLS.map((tool) => (
-              <li
-                key={tool.name}
-                className="flex w-12 sm:w-14 aspect-square items-center justify-center rounded-lg border border-gray-300 dark:border-white/30 transition-transform duration-500 hover:-translate-y-1"
-              >
+              <li key={tool.name} className="flex w-12 sm:w-14 aspect-square items-center justify-center rounded-lg border border-gray-300 dark:border-white/30 transition-transform duration-500 hover:-translate-y-1">
                 <img src={tool.icon} alt={tool.name} className="w-5 sm:w-7" />
               </li>
             ))}
