@@ -18,7 +18,7 @@ export default function About() {
             name: 'Education',
             icon1: './assets/edu-icon.png',
             icon2: './assets/edu-icon-dark.png',
-            description: 'B.Tech in Computer Science',
+            description: 'Bachelor in Business Studies',
         },
         {
             name: 'Projects',
