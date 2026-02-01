@@ -30,14 +30,24 @@ const INFO_CARDS = [
 export default function About() {
   return (
     <section id="about" className="w-full px-[12%] py-10 scroll-mt-20">
-      {/* Header */}
+      {/* Inline style to ensure the animation works even if Tailwind config isn't updated */}
+      <style jsx>{`
+        @keyframes spin_slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin_slow 10s linear infinite;
+        }
+      `}</style>
+
       <header className="text-center">
         <h4 className="mb-2 text-lg font-Ovo">Introduction</h4>
         <h2 className="text-5xl font-Ovo">About me</h2>
       </header>
 
       <div className="my-20 flex flex-col lg:flex-row items-center gap-20">
-        {/* Image Section with Rotating Badge */}
+        {/* Profile Image with Rotating Text */}
         <div className="relative mx-auto max-w-max">
           <img
             src="./assets/user-image.png"
@@ -45,48 +55,40 @@ export default function About() {
             className="w-64 sm:w-80 rounded-3xl"
           />
 
-          {/* The Circular Badge Container */}
-          <div className="absolute right-0 bottom-0 w-1/2 aspect-square translate-x-1/4 translate-y-1/3 rounded-full bg-white shadow-[0_4px_55px_rgba(149,0,162,0.15)] flex items-center justify-center overflow-hidden">
-            {/* Rotating Circular Text */}
+          {/* This is the white circle badge */}
+          <div className="absolute right-0 bottom-0 w-1/2 aspect-square translate-x-1/4 translate-y-1/3 rounded-full bg-white shadow-[0_4px_55px_rgba(149,0,162,0.15)] flex items-center justify-center">
+            
+            {/* The Rotating Text Image */}
             <img
               src="./assets/circular-text.png"
-              alt="Front-End Web Developer"
-              className="w-full animate-spin-slow" 
+              alt="Front-End Developer Text"
+              className="w-full h-full p-1 animate-spin-slow"
             />
-            {/* Stationary Center Icon */}
+            
+            {/* The Static Icon in the middle */}
             <img
               src="./assets/dev-icon.png"
               alt="Icon"
-              className="absolute w-1/4"
+              className="absolute w-1/4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             />
           </div>
         </div>
 
-        {/* Content Section */}
         <div className="flex-1">
-          <p className="mb-10 max-w-2xl font-Ovo text-gray-700 dark:text-white/80">
+          <p className="mb-10 max-w-2xl font-Ovo">
             I am an experienced Frontend Developer with over a decade of
             professional expertise. I have collaborated with prestigious
             organizations and contributed to their growth and success.
           </p>
 
-          {/* Info Cards */}
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
             {INFO_CARDS.map((item) => (
               <li
                 key={item.title}
                 className="rounded-xl border border-gray-300 dark:border-white/30 p-6 cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:bg-lightHover dark:hover:bg-darkHover/50"
               >
-                <img
-                  src={item.iconLight}
-                  alt=""
-                  className="w-7 mt-3 dark:hidden"
-                />
-                <img
-                  src={item.iconDark}
-                  alt=""
-                  className="w-7 mt-3 hidden dark:block"
-                />
+                <img src={item.iconLight} alt="" className="w-7 mt-3 dark:hidden" />
+                <img src={item.iconDark} alt="" className="w-7 mt-3 hidden dark:block" />
 
                 <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
                   {item.title}
@@ -98,7 +100,6 @@ export default function About() {
             ))}
           </ul>
 
-          {/* Tools Section */}
           <h4 className="my-6 font-Ovo text-gray-700 dark:text-white/80">
             Tools I use
           </h4>
