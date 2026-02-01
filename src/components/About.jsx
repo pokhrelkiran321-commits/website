@@ -76,7 +76,7 @@ export default function About() {
                         className={`
                             absolute right-0 bottom-0 w-1/2 aspect-square rounded-full
                             flex items-center justify-center
-                            bg-white dark:bg-white/50
+                            bg-white dark:bg-white/10
                             shadow-[0_4px_55px_rgba(149,0,162,0.15)]
                             transition-all duration-700 ease-out
                             ${visible
