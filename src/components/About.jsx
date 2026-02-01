@@ -74,10 +74,11 @@ export default function About() {
                     <div
                         ref={circleRef}
                         className={`
-                            absolute right-0 bottom-0 w-1/2 aspect-square rounded-full
+                            absolute right-0 bottom-0
+                            w-40 sm:w-44 aspect-square rounded-full
                             flex items-center justify-center
-                            bg-white dark:bg-white/10
-                            shadow-[0_4px_55px_rgba(149,0,162,0.15)]
+                            bg-gray-200 dark:bg-gray-800
+                            shadow-[0_10px_40px_rgba(0,0,0,0.35)]
                             transition-all duration-700 ease-out
                             ${visible
                                 ? "opacity-100 translate-x-1/4 translate-y-1/3"
@@ -90,7 +91,7 @@ export default function About() {
                         <img
                             src="./assets/circular-text.png"
                             alt=""
-                            className="w-full"
+                            className="w-full opacity-80"
                         />
                         <img
                             src="./assets/dev-icon.png"
