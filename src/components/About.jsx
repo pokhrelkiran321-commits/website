@@ -77,7 +77,7 @@ export default function About() {
                             absolute right-0 bottom-0
                             w-40 sm:w-44 aspect-square rounded-full
                             flex items-center justify-center
-                            bg-gray-200 dark:bg-gray-800
+                            bg-white-200 dark:bg-white-800
                             shadow-[0_10px_40px_rgba(0,0,0,0.35)]
                             transition-all duration-700 ease-out
                             ${visible
