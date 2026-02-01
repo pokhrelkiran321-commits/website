@@ -37,7 +37,7 @@ export default function About() {
       </header>
 
       <div className="my-20 flex flex-col lg:flex-row items-center gap-20">
-        {/* Image */}
+        {/* Image Section with Rotating Badge */}
         <div className="relative mx-auto max-w-max">
           <img
             src="./assets/user-image.png"
@@ -45,23 +45,26 @@ export default function About() {
             className="w-64 sm:w-80 rounded-3xl"
           />
 
+          {/* The Circular Badge Container */}
           <div className="absolute right-0 bottom-0 w-1/2 aspect-square translate-x-1/4 translate-y-1/3 rounded-full bg-white shadow-[0_4px_55px_rgba(149,0,162,0.15)] flex items-center justify-center overflow-hidden">
+            {/* Rotating Circular Text */}
             <img
               src="./assets/circular-text.png"
-              alt=""
-              className="w-full animate-slide_slow"
+              alt="Front-End Web Developer"
+              className="w-full animate-spin-slow" 
             />
+            {/* Stationary Center Icon */}
             <img
               src="./assets/dev-icon.png"
-              alt=""
+              alt="Icon"
               className="absolute w-1/4"
             />
           </div>
         </div>
 
-        {/* Content */}
+        {/* Content Section */}
         <div className="flex-1">
-          <p className="mb-10 max-w-2xl font-Ovo">
+          <p className="mb-10 max-w-2xl font-Ovo text-gray-700 dark:text-white/80">
             I am an experienced Frontend Developer with over a decade of
             professional expertise. I have collaborated with prestigious
             organizations and contributed to their growth and success.
@@ -95,7 +98,7 @@ export default function About() {
             ))}
           </ul>
 
-          {/* Tools */}
+          {/* Tools Section */}
           <h4 className="my-6 font-Ovo text-gray-700 dark:text-white/80">
             Tools I use
           </h4>
