@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Header slide-up animation */
+/* Header slide-up animation (repeats on scroll) */
 .header-slide {
   opacity: 0;
   transform: translateY(60px);
   transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: transform, opacity;
 }
 
 .header-slide.active {
