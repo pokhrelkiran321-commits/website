@@ -103,17 +103,19 @@ export default function About() {
     ];
 
     return (
-        <div
+        <section
             id="about"
             ref={sectionRef}
-            className={`w-full px-[12%] py-10 scroll-mt-20 ${motionBase}`}
+            className={`relative w-full px-[12%] py-10 scroll-mt-20 ${motionBase}`}
         >
             <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
             <h2 className="text-center text-5xl font-Ovo">About me</h2>
 
-            <div className="flex w-full flex-col lg:flex-row items-start gap-20 my-20">
+            {/* THIS container defines the sticky boundary */}
+            <div className="flex w-full flex-col lg:flex-row items-start gap-20 my-20 min-h-[160vh]">
+                
                 {/* Sticky Profile Image */}
-                <div className="flex-shrink-0 lg:sticky lg:top-32 self-start">
+                <div className="flex-shrink-0 lg:sticky lg:top-0 self-start">
                     <img
                         src="./assets/user-image.png"
                         alt="User"
@@ -126,7 +128,7 @@ export default function About() {
                     />
                 </div>
 
-                {/* Right Content */}
+                {/* Scrollable Content */}
                 <div className="flex-1">
                     <p className="mb-10 max-w-2xl font-Ovo">
                         I am currently a Bachelor’s student pursuing a degree in Business Studies,
@@ -136,7 +138,6 @@ export default function About() {
                         Associates Education Consultancy.
                     </p>
 
-                    {/* Info Cards */}
                     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mb-10">
                         {data.map((item) => (
                             <li
@@ -152,7 +153,6 @@ export default function About() {
                         ))}
                     </ul>
 
-                    {/* Tools */}
                     <h4 className="my-6 font-Ovo">Tools I use</h4>
                     <ul className="flex items-center gap-3 sm:gap-5">
                         {tools.map((tool) => (
@@ -213,6 +213,6 @@ export default function About() {
                     ))}
                 </ul>
             </div>
-        </div>
+        </section>
     );
 }
