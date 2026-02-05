@@ -15,7 +15,7 @@ export default function About() {
                             "translate-y-0",
                             "scale-100"
                         );
-                        observer.unobserve(entry.target); // run once
+                        observer.unobserve(entry.target);
                     }
                 });
             },
@@ -28,6 +28,9 @@ export default function About() {
 
         return () => observer.disconnect();
     }, []);
+
+    const motionBase =
+        "opacity-0 translate-y-14 scale-[0.96] transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]";
 
     const tools = [
         { name: "vscode", icon: "./assets/vscode.png" },
@@ -99,9 +102,6 @@ export default function About() {
         },
     ];
 
-    const motionBase =
-        "opacity-0 translate-y-14 scale-[0.96] transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]";
-
     return (
         <div
             id="about"
@@ -112,8 +112,8 @@ export default function About() {
             <h2 className="text-center text-5xl font-Ovo">About me</h2>
 
             <div className="flex w-full flex-col lg:flex-row items-start gap-20 my-20">
-                {/* Profile Image */}
-                <div className="flex-shrink-0">
+                {/* Sticky Profile Image */}
+                <div className="flex-shrink-0 lg:sticky lg:top-32 self-start">
                     <img
                         src="./assets/user-image.png"
                         alt="User"
@@ -170,10 +170,7 @@ export default function About() {
 
             {/* Education */}
             <div ref={eduRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
-                <h2 className="text-3xl font-Ovo text-left underline mb-8">
-                    Education
-                </h2>
-
+                <h2 className="text-3xl font-Ovo underline mb-8">Education</h2>
                 <ul className="space-y-6">
                     {educationList.map((edu, i) => (
                         <li key={i}>
@@ -191,15 +188,11 @@ export default function About() {
 
             {/* Work Experience */}
             <div ref={workRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
-                <h2 className="text-3xl font-Ovo text-left underline mb-8">
-                    Work Experience
-                </h2>
-
+                <h2 className="text-3xl font-Ovo underline mb-8">Work Experience</h2>
                 <ul className="space-y-10">
                     {workExperience.map((work, i) => (
                         <li key={i}>
                             <h3 className="text-lg font-semibold">{work.company}</h3>
-
                             <a
                                 href={work.website}
                                 target="_blank"
@@ -208,11 +201,9 @@ export default function About() {
                             >
                                 {work.website.replace("https://", "www.")}
                             </a>
-
                             <p className="italic text-gray-600 dark:text-white/80 mb-2">
                                 {work.role}
                             </p>
-
                             <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-white/80">
                                 {work.points.map((point, j) => (
                                     <li key={j}>{point}</li>
