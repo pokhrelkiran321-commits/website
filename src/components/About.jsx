@@ -1,4 +1,32 @@
+import { useEffect, useRef } from "react";
+
 export default function About() {
+    const sectionRef = useRef(null);
+    const eduRef = useRef(null);
+    const workRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(
+                            "opacity-100",
+                            "translate-y-0"
+                        );
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        if (eduRef.current) observer.observe(eduRef.current);
+        if (workRef.current) observer.observe(workRef.current);
+
+        return () => observer.disconnect();
+    }, []);
+
     const tools = [
         { name: "vscode", icon: "./assets/vscode.png" },
         { name: "firebase", icon: "./assets/firebase.png" },
@@ -70,7 +98,12 @@ export default function About() {
     ];
 
     return (
-        <div id="about" className="w-full px-[12%] py-10 scroll-mt-20">
+        <div
+            id="about"
+            ref={sectionRef}
+            className="w-full px-[12%] py-10 scroll-mt-20
+                       opacity-0 translate-y-10 transition-all duration-700 ease-out"
+        >
             <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
             <h2 className="text-center text-5xl font-Ovo">About me</h2>
 
@@ -105,7 +138,7 @@ export default function About() {
                             <li
                                 key={item.name}
                                 className="border border-gray-300 dark:border-white/30 rounded-xl p-6
-                                hover:-translate-y-1 duration-500"
+                                           hover:-translate-y-1 duration-500"
                             >
                                 <img src={item.icon1} alt="" className="w-7 mt-3 dark:hidden" />
                                 <img src={item.icon2} alt="" className="w-7 mt-3 hidden dark:block" />
@@ -122,7 +155,7 @@ export default function About() {
                             <li
                                 key={tool.name}
                                 className="w-12 sm:w-14 aspect-square flex items-center justify-center
-                                border rounded-lg hover:-translate-y-1 duration-500"
+                                           border rounded-lg hover:-translate-y-1 duration-500"
                             >
                                 <img src={tool.icon} alt={tool.name} className="w-5 sm:w-7" />
                             </li>
@@ -131,8 +164,12 @@ export default function About() {
                 </div>
             </div>
 
-            {/* Education Section */}
-            <div className="mt-20 max-w-3xl mx-auto">
+            {/* Education */}
+            <div
+                ref={eduRef}
+                className="mt-20 max-w-3xl mx-auto
+                           opacity-0 translate-y-10 transition-all duration-700 ease-out"
+            >
                 <h2 className="text-3xl font-Ovo text-left underline mb-8">
                     Education
                 </h2>
@@ -152,8 +189,12 @@ export default function About() {
                 </ul>
             </div>
 
-            {/* Work Experience Section */}
-            <div className="mt-20 max-w-3xl mx-auto">
+            {/* Work Experience */}
+            <div
+                ref={workRef}
+                className="mt-20 max-w-3xl mx-auto
+                           opacity-0 translate-y-10 transition-all duration-700 ease-out"
+            >
                 <h2 className="text-3xl font-Ovo text-left underline mb-8">
                     Work Experience
                 </h2>
