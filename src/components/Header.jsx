@@ -7,10 +7,22 @@ export default function Header() {
     const el = headerRef.current;
     if (!el) return;
 
-    // Animate once on load
-    requestAnimationFrame(() => {
-      el.classList.add("active");
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("active");
+        } else {
+          el.classList.remove("active");
+        }
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -18,11 +30,19 @@ export default function Header() {
       ref={headerRef}
       className="header-slide w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4"
     >
-      <img src="./assets/profile-img.png" alt="" className="rounded-full w-32" />
+      <img
+        src="./assets/profile-img.png"
+        alt="Profile"
+        className="rounded-full w-32"
+      />
 
       <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
         Hi! I&apos;m Kiran Pokhrel
-        <img src="./assets/hand-icon.png" alt="" className="w-6 mb-1" />
+        <img
+          src="./assets/hand-icon.png"
+          alt="Wave"
+          className="w-6 mb-1"
+        />
       </h3>
 
       <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo">
@@ -40,7 +60,11 @@ export default function Header() {
           className="px-10 py-2.5 border rounded-full bg-gradient-to-r from-[#b820e6] to-[#da7d20] text-white flex items-center gap-2 dark:border-transparent"
         >
           contact me
-          <img src="./assets/right-arrow-white.png" alt="" className="w-4" />
+          <img
+            src="./assets/right-arrow-white.png"
+            alt=""
+            className="w-4"
+          />
         </a>
 
         <a
