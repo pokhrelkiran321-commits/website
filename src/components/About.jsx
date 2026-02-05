@@ -2,8 +2,6 @@ import { useEffect, useRef } from "react";
 
 export default function About() {
     const sectionRef = useRef(null);
-    const eduRef = useRef(null);
-    const workRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -23,9 +21,6 @@ export default function About() {
         );
 
         if (sectionRef.current) observer.observe(sectionRef.current);
-        if (eduRef.current) observer.observe(eduRef.current);
-        if (workRef.current) observer.observe(workRef.current);
-
         return () => observer.disconnect();
     }, []);
 
@@ -111,11 +106,11 @@ export default function About() {
             <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
             <h2 className="text-center text-5xl font-Ovo">About me</h2>
 
-            {/* THIS container defines the sticky boundary */}
-            <div className="flex w-full flex-col lg:flex-row items-start gap-20 my-20 min-h-[160vh]">
+            {/* Sticky boundary */}
+            <div className="flex w-full flex-col lg:flex-row gap-20 my-20 min-h-[220vh]">
                 
-                {/* Sticky Profile Image */}
-                <div className="flex-shrink-0 lg:sticky lg:top-0 self-start">
+                {/* LEFT: Sticky Image */}
+                <div className="flex-shrink-0 lg:sticky lg:top-24 self-start">
                     <img
                         src="./assets/user-image.png"
                         alt="User"
@@ -128,7 +123,7 @@ export default function About() {
                     />
                 </div>
 
-                {/* Scrollable Content */}
+                {/* RIGHT: All scrolling content */}
                 <div className="flex-1">
                     <p className="mb-10 max-w-2xl font-Ovo">
                         I am currently a Bachelor’s student pursuing a degree in Business Studies,
@@ -138,7 +133,8 @@ export default function About() {
                         Associates Education Consultancy.
                     </p>
 
-                    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mb-10">
+                    {/* Info Cards */}
+                    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mb-16">
                         {data.map((item) => (
                             <li
                                 key={item.name}
@@ -153,8 +149,9 @@ export default function About() {
                         ))}
                     </ul>
 
+                    {/* Tools */}
                     <h4 className="my-6 font-Ovo">Tools I use</h4>
-                    <ul className="flex items-center gap-3 sm:gap-5">
+                    <ul className="flex items-center gap-3 sm:gap-5 mb-20">
                         {tools.map((tool) => (
                             <li
                                 key={tool.name}
@@ -165,53 +162,53 @@ export default function About() {
                             </li>
                         ))}
                     </ul>
+
+                    {/* Education */}
+                    <div className="mb-20">
+                        <h2 className="text-3xl font-Ovo underline mb-8">Education</h2>
+                        <ul className="space-y-6">
+                            {educationList.map((edu, i) => (
+                                <li key={i}>
+                                    <h3 className="text-lg font-semibold">{edu.institution}</h3>
+                                    <p className="text-gray-600 dark:text-white/80">{edu.degree}</p>
+                                    {edu.year && (
+                                        <p className="text-sm text-gray-500 dark:text-white/60">
+                                            {edu.year}
+                                        </p>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Work Experience */}
+                    <div>
+                        <h2 className="text-3xl font-Ovo underline mb-8">Work Experience</h2>
+                        <ul className="space-y-10">
+                            {workExperience.map((work, i) => (
+                                <li key={i}>
+                                    <h3 className="text-lg font-semibold">{work.company}</h3>
+                                    <a
+                                        href={work.website}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-blue-600 dark:text-blue-400 hover:underline block mb-1"
+                                    >
+                                        {work.website.replace("https://", "www.")}
+                                    </a>
+                                    <p className="italic text-gray-600 dark:text-white/80 mb-2">
+                                        {work.role}
+                                    </p>
+                                    <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-white/80">
+                                        {work.points.map((point, j) => (
+                                            <li key={j}>{point}</li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            {/* Education */}
-            <div ref={eduRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
-                <h2 className="text-3xl font-Ovo underline mb-8">Education</h2>
-                <ul className="space-y-6">
-                    {educationList.map((edu, i) => (
-                        <li key={i}>
-                            <h3 className="text-lg font-semibold">{edu.institution}</h3>
-                            <p className="text-gray-600 dark:text-white/80">{edu.degree}</p>
-                            {edu.year && (
-                                <p className="text-sm text-gray-500 dark:text-white/60">
-                                    {edu.year}
-                                </p>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            {/* Work Experience */}
-            <div ref={workRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
-                <h2 className="text-3xl font-Ovo underline mb-8">Work Experience</h2>
-                <ul className="space-y-10">
-                    {workExperience.map((work, i) => (
-                        <li key={i}>
-                            <h3 className="text-lg font-semibold">{work.company}</h3>
-                            <a
-                                href={work.website}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-blue-600 dark:text-blue-400 hover:underline block mb-1"
-                            >
-                                {work.website.replace("https://", "www.")}
-                            </a>
-                            <p className="italic text-gray-600 dark:text-white/80 mb-2">
-                                {work.role}
-                            </p>
-                            <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-white/80">
-                                {work.points.map((point, j) => (
-                                    <li key={j}>{point}</li>
-                                ))}
-                            </ul>
-                        </li>
-                    ))}
-                </ul>
             </div>
         </section>
     );
