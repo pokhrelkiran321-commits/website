@@ -12,8 +12,10 @@ export default function About() {
                     if (entry.isIntersecting) {
                         entry.target.classList.add(
                             "opacity-100",
-                            "translate-y-0"
+                            "translate-y-0",
+                            "scale-100"
                         );
+                        observer.unobserve(entry.target); // run once
                     }
                 });
             },
@@ -97,12 +99,14 @@ export default function About() {
         },
     ];
 
+    const motionBase =
+        "opacity-0 translate-y-14 scale-[0.96] transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]";
+
     return (
         <div
             id="about"
             ref={sectionRef}
-            className="w-full px-[12%] py-10 scroll-mt-20
-                       opacity-0 translate-y-10 transition-all duration-700 ease-out"
+            className={`w-full px-[12%] py-10 scroll-mt-20 ${motionBase}`}
         >
             <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
             <h2 className="text-center text-5xl font-Ovo">About me</h2>
@@ -165,11 +169,7 @@ export default function About() {
             </div>
 
             {/* Education */}
-            <div
-                ref={eduRef}
-                className="mt-20 max-w-3xl mx-auto
-                           opacity-0 translate-y-10 transition-all duration-700 ease-out"
-            >
+            <div ref={eduRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
                 <h2 className="text-3xl font-Ovo text-left underline mb-8">
                     Education
                 </h2>
@@ -190,11 +190,7 @@ export default function About() {
             </div>
 
             {/* Work Experience */}
-            <div
-                ref={workRef}
-                className="mt-20 max-w-3xl mx-auto
-                           opacity-0 translate-y-10 transition-all duration-700 ease-out"
-            >
+            <div ref={workRef} className={`mt-20 max-w-3xl mx-auto ${motionBase}`}>
                 <h2 className="text-3xl font-Ovo text-left underline mb-8">
                     Work Experience
                 </h2>
@@ -202,9 +198,7 @@ export default function About() {
                 <ul className="space-y-10">
                     {workExperience.map((work, i) => (
                         <li key={i}>
-                            <h3 className="text-lg font-semibold">
-                                {work.company}
-                            </h3>
+                            <h3 className="text-lg font-semibold">{work.company}</h3>
 
                             <a
                                 href={work.website}
