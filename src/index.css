@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Header slide-up animation */
+.header-slide {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.header-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
