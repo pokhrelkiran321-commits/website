@@ -80,7 +80,7 @@ export default function About() {
             points: [
                 "Used Salesforce CRM to track student profiles and application status",
                 "Maintained accurate student and compliance records",
-                "Handled visa documentation and compliance requirements",
+                "Helped in handeling visa documentation and compliance requirements",
                 "Prepared and submitted GS documentation",
             ],
         },
